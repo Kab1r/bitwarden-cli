@@ -1,0 +1,39 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "autodiscover": true,
+  "extends": [
+    "config:recommended"
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["(^|/)VERSION$"],
+      "matchStrings": [
+        "^(?<currentValue>.*)$"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "bitwarden/clients",
+      "extractVersionTemplate": "cli-v(?<version>.*)",
+      "lookahead": 1,
+      "major": {
+        "automerge": true
+      },
+      "minor": {
+        "automerge": true
+      },
+      "patch": {
+        "automerge": true
+      },
+      "packageRules": [
+        {
+          "matchDatasources": ["github-releases"],
+          "matchManagers": ["regex"],
+          "matchDepNames": ["bitwarden/clients"],
+          "versioning": "semver",
+          "allowedVersions": "/^cli-v\\d+\\.\\d+\\.\\d+$/",
+          "groupName": "Bitwarden CLI Version Updates",
+          "prConcurrentLimit": 1
+        }
+      ]
+    }
+  ]
+}
