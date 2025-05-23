@@ -65,7 +65,7 @@ jobs:
           tags: ${{ env.CR_REPO }}:${{ env.VERSION }}
           labels: ${{ steps.meta.outputs.labels }}
       - name: Create tag
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const {VERSION} = process.env
