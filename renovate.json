@@ -6,7 +6,7 @@
   ],
   "customManagers": [
     {
-      "customType": "regex"
+      "customType": "regex",
       "managerFilePatterns": ["(^|/)VERSION$"],
       "matchStrings": [
         "^(?<currentValue>.*)$"
