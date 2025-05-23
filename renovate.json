@@ -1,11 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    "semanticCommitTypeAll(chore)"
   ],
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": ["(^|/)VERSION$"],
+      "customType": "regex"
+      "managerFilePatterns": ["(^|/)VERSION$"],
       "matchStrings": [
         "^(?<currentValue>.*)$"
       ],
@@ -18,7 +20,7 @@
     {
       "matchDatasources": ["github-releases"],
       "matchManagers": ["regex"],
-      "matchDepNames": ["bitwarden/clients"],
+      "matchPackageNames": ["bitwarden/clients"],
       "versioning": "semver",
       "allowedVersions": "/^cli-v\\d+\\.\\d+\\.\\d+$/",
       "groupName": "Bitwarden CLI Version Updates",
