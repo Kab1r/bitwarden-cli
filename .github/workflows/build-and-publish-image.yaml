@@ -26,7 +26,7 @@ jobs:
       packages: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Set version from file
         run: |
           echo "VERSION=$(cat VERSION)" >> "$GITHUB_ENV"
