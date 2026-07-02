@@ -1,4 +1,4 @@
-FROM debian:sid
+FROM debian:sid@sha256:5d1a66dd4100ff2faba25ae02984de721d8faf3957e1d8e68bc50f3e5adbc2f9
 
 ARG BW_CLI_VERSION
 
