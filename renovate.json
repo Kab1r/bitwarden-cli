@@ -10,11 +10,11 @@
         "/(^|/)VERSION$/"
       ],
       "matchStrings": [
-        "^(?<currentValue>.*)$"
+        "^(?<currentValue>\\d+\\.\\d+\\.\\d+)\\s*$"
       ],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "bitwarden/clients",
-      "extractVersionTemplate": "cli-v(?<version>.*)"
+      "extractVersionTemplate": "^cli-v(?<version>\\d+\\.\\d+\\.\\d+)$"
     }
   ],
   "packageRules": [
@@ -29,7 +29,7 @@
         "bitwarden/clients"
       ],
       "versioning": "semver",
-      "allowedVersions": "/^cli-v\\d+\\.\\d+\\.\\d+$/",
+      "allowedVersions": "/^\\d+\\.\\d+\\.\\d+$/",
       "groupName": "Bitwarden CLI Version Updates",
       "prConcurrentLimit": 1,
       "automerge": true,
