@@ -1,0 +1,42 @@
+name: Renovate CI
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - renovate/**
+    paths:
+      - .github/workflows/renovate-ci.yaml
+      - Dockerfile
+      - VERSION
+      - entrypoint.sh
+
+jobs:
+  build-and-test-image:
+    name: Build and test image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set version from file
+        run: |
+          echo "VERSION=$(cat VERSION)" >> "$GITHUB_ENV"
+
+      - name: Validate version format
+        run: |
+          grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$' VERSION
+
+      - name: Build image
+        run: |
+          docker build \
+            --build-arg "BW_CLI_VERSION=${VERSION}" \
+            --tag "bitwarden-cli:${VERSION}" \
+            .
+
+      - name: Test image
+        run: |
+          docker run --rm --entrypoint bw "bitwarden-cli:${VERSION}" --version | tee actual-version.txt
+          grep -Fx "${VERSION}" actual-version.txt
