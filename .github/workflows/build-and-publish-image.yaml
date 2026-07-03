@@ -44,7 +44,7 @@ jobs:
             fi
           done
       - name: Log in to the Container registry
-        uses: docker/login-action@6d4b68b490aef8836e8fb5e50ee7b3bdfa5894f0 # v3
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
