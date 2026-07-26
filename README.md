@@ -18,5 +18,5 @@ docker pull ghcr.io/kab1r/bitwarden-cli:<official bitwarden cli version>
 The version in [VERSION](/VERSION) is updated automatically alongside the image below:
 
 ```bash
-ghcr.io/kab1r/bitwarden-cli:2026.6.0
+ghcr.io/kab1r/bitwarden-cli:2026.7.0
 ```
