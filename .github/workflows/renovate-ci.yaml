@@ -6,6 +6,7 @@ on:
     branches:
       - renovate/**
     paths:
+      - .github/workflows/build-and-publish-image.yaml
       - .github/workflows/renovate-ci.yaml
       - Dockerfile
       - VERSION
